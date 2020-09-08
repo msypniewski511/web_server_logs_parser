@@ -1,7 +1,10 @@
 module LoggerParser
+
+  require_relative 'read_and_parse_data'
+  # Entry point for given arguments and control flow. 
   class MainParser
     
-    def initialize(argv)
+    def initialize(argv = [])
       @argv = argv
     end
 
@@ -11,8 +14,10 @@ module LoggerParser
       elsif !File.exist?(argv)
         puts "Could not open the file #{argv}. Please verify the file location."
       else
-        open_file
+        ReadAndParseData.new(open_file).call
       end
+    rescue Errno::ENOENT
+      puts "Could not open the file #{argv}. Please verify the file location."
     end
 
     private
