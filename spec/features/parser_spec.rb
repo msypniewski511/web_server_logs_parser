@@ -1,6 +1,6 @@
 module LoggerParser
   RSpec.describe 'parser' do
-    context 'when recives a log as argument' do
+    context 'recives a log as argument' do
 
       # helper function to run command by system
       def support_function(command, expectation)
