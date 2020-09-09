@@ -1,9 +1,10 @@
 module LoggerParser
+  require_relative 'list'
+
   # Reading file
   class ReadAndParseData
     def initialize(file)
       @file = file
-
     end
 
     def call
@@ -15,11 +16,12 @@ module LoggerParser
 
     def read_and_parse_file
       file.each_line do |line|
+
         tmp = line.split()
-        puts "#{tmp[0]} 1"
-        puts
-        puts "#{tmp[0]} 1"
-        puts "\n"
+        list = List.new()
+        list.path = tmp[0]
+        list.visitor_id = tmp[1]
+        list.valid? && list.save
       end
       # TODO
       # puts "/some_page/1 1\n\n/some_page/1 1\n\n"

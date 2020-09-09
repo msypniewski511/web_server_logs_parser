@@ -5,11 +5,13 @@ module LoggerParser
   # Model of Squel ORM
   class List < Sequel::Model
 
-
-    def validate
+    ATTRS = [:path, :visitor_id]
+    def valid?
       super
-      errors.add(:path, "can't be empty") if path.nil? || path.empty?
-      errors.add(:visitor_id, "can't be empty") if visitor_id.nil? || visitor_id.empty?
+      return false if (path.nil? || path.empty?)
+      return false if (visitor_id.nil? || visitor_id.empty?)
+      return true
+      # errors.add(:visitor_id, "can't be empty") if visitor_id.nil? || visitor_id.empty?
     end
 
 

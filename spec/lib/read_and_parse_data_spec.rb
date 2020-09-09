@@ -9,10 +9,10 @@ module LoggerParser
       let(:file_to_read) { File.open(file_path, 'r') }
 
       context 'when file contain invalid data' do
-        let(:expectation) { ['/some_page/1', '123.456.789.012'] }
         let(:file_path) { File.expand_path('../fixtures/invalidlog.log', __dir__) }
 
         it 'does not print anything' do
+
           object.call
           expect(List.count).to be_zero
         end
@@ -24,7 +24,8 @@ module LoggerParser
 
         it 'store data' do
           object.call
-          expect(List.get(List::ATTRS)).to eq(expectation)
+          expect([List.last.path, List.last.visitor_id]).to eq(expectation)
+          expect(List.count).to eq(1)
         end
       end
       
