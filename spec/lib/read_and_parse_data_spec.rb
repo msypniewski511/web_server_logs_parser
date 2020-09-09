@@ -22,7 +22,10 @@ module LoggerParser
         let(:expectation) { ['/some_page/1', '123.456.789.012'] }
         let(:file_path) { File.expand_path('../fixtures/log.log', __dir__) }
 
-        it {object.call}
+        it 'store data' do
+          object.call
+          expect(List.get(List::ATTRS)).to eq(expectation)
+        end
       end
       
     end  
