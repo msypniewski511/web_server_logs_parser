@@ -3,6 +3,9 @@
 source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+gem 'pry'
+gem 'sequel'
+gem 'sqlite3'
 
 group :test do
   gem 'factory_bot'

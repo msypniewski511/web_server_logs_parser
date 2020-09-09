@@ -1,13 +1,13 @@
 require_relative '../../lib/list'
 
-
 module LoggerParser
   RSpec.describe List do
 
     subject(:list) { described_class.new(path: 'some_page/1', visitor_id: '123.456.789.012') }
-
+    
     context '#valid?' do
       it 'is valid with valid attributes' do
+        List.create(path: 'a', visitor_id: '5')
         expect(list).to be_valid
       end
 
@@ -50,7 +50,7 @@ module LoggerParser
       end
 
       context "with data" do
-        let(:expectation) { [{ count: 1, path: 'a' }, { count: 2, path: 'b' }] }
+        let(:expectation) { [{ count: 2, path: 'b' }, { count: 1, path: 'a' }] }
 
         before { given_data }
         it { is_expected.to eq(expectation) }
@@ -60,11 +60,11 @@ module LoggerParser
     private
   
     def given_data
-      create(:list, path: 'a', visitor_id: '1')
-      create(:list, path: 'a', visitor_id: '1')
-      create(:list, path: 'a', visitor_id: '1')
-      create(:list, path: 'b', visitor_id: '2')
-      create(:list, path: 'b', visitor_id: '3')
+      List.create(path: 'a', visitor_id: '1')
+      List.create(path: 'a', visitor_id: '1')
+      List.create(path: 'a', visitor_id: '1')
+      List.create(path: 'b', visitor_id: '2')
+      List.create(path: 'b', visitor_id: '3')
     end
   end
 end
