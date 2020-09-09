@@ -32,7 +32,7 @@ module LoggerParser
       end
   
       context 'when valid filepath provided' do
-        let(:expectation) { "/some_page/1 1\n\n/some_page/1 1\n\n" }
+        let(:expectation) { "/some_page/1 1\n\n/some_page/1 1\n" }
         let(:file) { instance_double(File) }
         let(:args) { [File.expand_path('../fixtures/log.log', __dir__)] }
   

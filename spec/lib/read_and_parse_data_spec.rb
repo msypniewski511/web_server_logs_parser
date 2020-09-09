@@ -12,10 +12,11 @@ module LoggerParser
         let(:file_path) { File.expand_path('../fixtures/invalidlog.log', __dir__) }
 
         it 'does not print anything' do
-
           object.call
           expect(List.count).to be_zero
         end
+
+        # Add expectation of storing invalid data
       end
 
       context 'when file contain valid data' do

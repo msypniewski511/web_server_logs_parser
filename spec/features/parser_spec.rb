@@ -23,7 +23,7 @@ module LoggerParser
     context 'when valid filepath provided' do
       # pending 'core functionality to implement'
       file_path = File.expand_path('../fixtures/log.log', __dir__)
-      expectation = "/some_page/1 1\n\n/some_page/1 1\n\n"
+      expectation = "/some_page/1 1\n\n/some_page/1 1\n"
       it { support_function("ruby parser.rb #{file_path}", expectation) }
     end
   end
