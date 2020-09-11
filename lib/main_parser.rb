@@ -1,6 +1,7 @@
 module LoggerParser
 
   require_relative 'read_and_parse_data'
+  require_relative 'print_data'
   # Entry point for given arguments and control flow. 
   class MainParser
     
@@ -15,6 +16,7 @@ module LoggerParser
         puts "Could not open the file #{argv}. Please verify the file location."
       else
         ReadAndParseData.new(open_file).call
+        PrintData.new(model_klass: List).call
       end
     rescue Errno::ENOENT
       puts "Could not open the file #{argv}. Please verify the file location."

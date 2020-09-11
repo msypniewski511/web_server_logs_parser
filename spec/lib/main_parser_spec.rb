@@ -11,11 +11,6 @@ end
 module LoggerParser
   RSpec.describe MainParser do
     describe '#call' do
-      def main_parser(args, expectation)
-        expect do
-          LoggerParser::MainParser.new(args).call
-        end.to output(expectation).to_stdout_from_any_process
-      end
 
       subject(:object) { described_class.new(args[0]) }
 
