@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 module LoggerParser
   RSpec.describe 'parser' do
-
     # helper function to run command by system
     def support_function(command, expectation)
-      expect do  
+      expect do
         system(command)
       end.to output(expectation).to_stdout_from_any_process
     end
 
-    context "when no arguments provided" do
+    context 'when no arguments provided' do
       expectation = "Please provide a file location to get the webserver log report.\n"
       it { support_function('ruby parser.rb', expectation) }
       'returns information about invalid filepath'

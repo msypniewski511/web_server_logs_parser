@@ -1,10 +1,10 @@
-module LoggerParser
+# frozen_string_literal: true
 
+module LoggerParser
   require_relative 'read_and_parse_data'
-  # Entry point for given arguments and control flow. 
+  # Entry point for given arguments and control flow.
   class PrintData
-    
-    def initialize(argv={})
+    def initialize(argv = {})
       @model_klass = argv[:model_klass] || 'LoggerParser::List'
       @invalid_entries = argv[:invalid_entries] || nil
     end
@@ -30,6 +30,7 @@ module LoggerParser
     attr_reader :model_klass, :invalid_entries
     def print_data
       return if model_klass.all.count.zero?
+
       model_klass.group_by_path_with_count.each do |element|
         puts "#{element.path} #{element[:count]}\n"
       end
@@ -38,7 +39,8 @@ module LoggerParser
         puts "#{element.path} #{element[:count]}\n"
       end
     end
-    def printuj element
+
+    def printuj(element)
       puts "#{element[:path]} #{element[:count]}\n"
     end
   end

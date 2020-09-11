@@ -1,9 +1,8 @@
-
+# frozen_string_literal: true
 
 module LoggerParser
   RSpec.describe ReadAndParseData do
     describe '#call' do
-
       subject(:object) { described_class.new(file_to_read) }
 
       let(:file_to_read) { File.open(file_path, 'r') }
@@ -29,7 +28,6 @@ module LoggerParser
           expect(List.count).to eq(1)
         end
       end
-      
-    end  
+    end
   end
 end
