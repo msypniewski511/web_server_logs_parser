@@ -12,6 +12,7 @@ module LoggerParser
     context 'when no arguments provided' do
       expectation = "Please provide a file location to get the webserver log report.\n"
       it { support_function('ruby parser.rb', expectation) }
+
       'returns information about invalid filepath'
     end
 

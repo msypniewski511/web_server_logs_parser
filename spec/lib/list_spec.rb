@@ -6,24 +6,28 @@ module LoggerParser
   RSpec.describe List do
     subject(:list) { described_class.new(path: 'some_page/1', visitor_id: '123.456.789.012') }
 
+<<<<<<< HEAD
     context '#valid?' do
+=======
+    describe '#valid?' do
+>>>>>>> refactoring
       it 'is valid with valid attributes' do
-        List.create(path: 'a', visitor_id: '5')
+        described_class.create(path: 'a', visitor_id: '5')
         expect(list).to be_valid
       end
 
       it 'is invalid without path' do
         list.path = nil
-        expect(list).to_not be_valid
+        expect(list).not_to be_valid
       end
 
       it 'is invalid without visitor_id' do
         list.visitor_id = nil
-        expect(list).to_not be_valid
+        expect(list).not_to be_valid
       end
     end
 
-    context '.group_by_path_with_count' do
+    describe '.group_by_path_with_count' do
       subject(:query) do
         described_class.group_by_path_with_count.map(&:values)
       end
@@ -32,6 +36,7 @@ module LoggerParser
         let(:expectation) { [{ count: 3, path: 'a' }, { count: 2, path: 'b' }] }
 
         before { given_data }
+
         it { is_expected.to eq(expectation) }
       end
 
@@ -40,7 +45,7 @@ module LoggerParser
       end
     end
 
-    context '.group_by_unique_visits' do
+    describe '.group_by_unique_visits' do
       subject(:query) do
         described_class.group_by_unique_visits.map(&:values)
       end
@@ -53,6 +58,7 @@ module LoggerParser
         let(:expectation) { [{ count: 2, path: 'b' }, { count: 1, path: 'a' }] }
 
         before { given_data }
+
         it { is_expected.to eq(expectation) }
       end
     end

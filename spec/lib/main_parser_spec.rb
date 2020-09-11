@@ -18,12 +18,14 @@ module LoggerParser
       context 'when no arguments provided' do
         let(:expectation) { "Please provide a file location to get the webserver log report.\n" }
         let(:args) { [] }
+
         include_examples 'Output test', 'prompts about filepath'
       end
 
       context 'when invalid filepath provided' do
         let(:expectation) { "Could not open the file abc. Please verify the file location.\n" }
         let(:args) { ['abc'] }
+
         include_examples 'Output test', 'prompts about invalid filepath'
       end
 

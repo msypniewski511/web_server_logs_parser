@@ -1,4 +1,9 @@
 # frozen_string_literal: true
+<<<<<<< HEAD
+=======
+
+# Webserver Log Parser
+>>>>>>> refactoring
 
 module LoggerParser
   require_relative '../config/sequel'
